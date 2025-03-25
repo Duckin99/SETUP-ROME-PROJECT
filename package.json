@@ -3,15 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "protoc": "npx proto-loader-gen-types --grpcLib=@grpc/grpc-js --outDir=src/proto/ ./src/proto/item.proto ./src/proto/user.proto",
+    "userServer": "tsx src/users/server",
+    "userClient": "tsx src/users/client",
+    "itemServer": "tsx src/items/server",
+    "itemClient": "tsx src/items/client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.1",
+    "@grpc/proto-loader": "^0.7.13",
+    "google-protobuf": "^3.21.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
 }
