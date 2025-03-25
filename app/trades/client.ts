@@ -15,7 +15,7 @@ const grpcObj = grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown as ProtoGrpcType;
 
-const client = new grpcObj.myPackage.ItemService(
+const client = new grpcObj.myPackage.TradeService(
   SERVER_URL,
   grpc.credentials.createInsecure()
 );

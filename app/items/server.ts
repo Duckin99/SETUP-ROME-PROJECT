@@ -1,10 +1,9 @@
 import * as grpc from "@grpc/grpc-js";
 import * as protoLoader from "@grpc/proto-loader";
-import { ProtoGrpcType } from "../../lib/proto/item";
-import { ItemServiceHandlers } from "../../lib/proto/itemPackage/ItemService";
+import { ITEM_SERVER_URL, PROTO_PATH } from "../../lib/config/config";
+import { ProtoGrpcType } from "../../lib/proto/my";
+import { ItemServiceHandlers } from "../../lib/proto/myPackage/ItemService";
 
-const SERVER_URL = "0.0.0.0:50052";
-const PROTO_PATH = __dirname + "/../proto/item.proto";
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
@@ -16,20 +15,26 @@ const grpcObj = grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown as ProtoGrpcType;
 
-const itemPackage = grpcObj.itemPackage;
+const myPackage = grpcObj.myPackage;
 
 const itemServiceHandler: ItemServiceHandlers = {
-  hello: (call, callback) => {
-    callback(null, { message: "Hello " + call.request.name });
-  },
+  CreateItem: () => {},
+  DeleteItem: () => {},
+  GetAllItems: () => {},
+  GetItem: () => {},
+  UpdateItem: () => {},
 };
 
 function main() {
   var server = new grpc.Server();
-  server.addService(itemPackage.ItemService.service, itemServiceHandler);
-  server.bindAsync(SERVER_URL, grpc.ServerCredentials.createInsecure(), () => {
-    console.log("serving itemPackage server at " + SERVER_URL);
-  });
+  server.addService(myPackage.ItemService.service, itemServiceHandler);
+  server.bindAsync(
+    ITEM_SERVER_URL,
+    grpc.ServerCredentials.createInsecure(),
+    () => {
+      console.log("serving itemPackage server at " + ITEM_SERVER_URL);
+    }
+  );
 }
 
 main();
