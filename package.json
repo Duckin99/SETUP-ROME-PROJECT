@@ -9,7 +9,14 @@
     "userServer": "tsx src/users/server",
     "userClient": "tsx src/users/client",
     "itemServer": "tsx src/items/server",
-    "itemClient": "tsx src/items/client"
+    "itemClient": "tsx src/items/client",
+    "db.create": "docker create --name rome-project-db --env-file .env -p 5432:5432 bitnami/postgresql",
+    "db.start": "docker start -i rome-project-db",
+    "generate": "npx prisma generate",
+    "db.push": "npx prisma db push",
+    "db.seed": "npx tsx ./prisma/seed.ts",
+    "db.studio": "npx prisma studio",
+    "db.migrate": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
