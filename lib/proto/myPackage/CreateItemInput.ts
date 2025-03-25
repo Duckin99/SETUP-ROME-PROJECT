@@ -7,6 +7,7 @@ export interface CreateItemInput {
   'category'?: (string);
   'imageUrl'?: (string);
   'condition'?: (string);
+  'userId'?: (number);
 }
 
 export interface CreateItemInput__Output {
@@ -15,4 +16,5 @@ export interface CreateItemInput__Output {
   'category'?: (string);
   'imageUrl'?: (string);
   'condition'?: (string);
+  'userId'?: (number);
 }

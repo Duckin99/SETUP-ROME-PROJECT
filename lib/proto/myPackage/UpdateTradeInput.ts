@@ -2,9 +2,11 @@
 
 
 export interface UpdateTradeInput {
+  'id'?: (number);
   'status'?: (string);
 }
 
 export interface UpdateTradeInput__Output {
+  'id'?: (number);
   'status'?: (string);
 }

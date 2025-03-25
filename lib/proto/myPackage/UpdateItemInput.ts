@@ -2,6 +2,7 @@
 
 
 export interface UpdateItemInput {
+  'id'?: (number);
   'title'?: (string);
   'description'?: (string);
   'category'?: (string);
@@ -10,6 +11,7 @@ export interface UpdateItemInput {
 }
 
 export interface UpdateItemInput__Output {
+  'id'?: (number);
   'title'?: (string);
   'description'?: (string);
   'category'?: (string);

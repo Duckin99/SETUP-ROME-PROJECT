@@ -4,13 +4,13 @@
 export interface CreateTradeInput {
   'requesterId'?: (number);
   'receiverId'?: (number);
-  'requestItemId'?: (number);
-  'receiveItemId'?: (number);
+  'requesterItemId'?: (number);
+  'receiverItemId'?: (number);
 }
 
 export interface CreateTradeInput__Output {
   'requesterId'?: (number);
   'receiverId'?: (number);
-  'requestItemId'?: (number);
-  'receiveItemId'?: (number);
+  'requesterItemId'?: (number);
+  'receiverItemId'?: (number);
 }

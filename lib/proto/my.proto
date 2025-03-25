@@ -1,11 +1,11 @@
-syntax = "proto3";
+  syntax = "proto3";
 package myPackage;
 
 service UserService {
   rpc GetUser(UserIdInput) returns (User);
   rpc UpdateUser(UpdateUserInput) returns (User);
   rpc DeleteUser(UserIdInput) returns (User);
-  rpc GetItemsFromUser(UserIdInput) returns (Item);
+  rpc GetItemsFromUser(UserIdInput) returns (ItemListOutput);
 }
 
 service ItemService {
@@ -46,27 +46,29 @@ message User {
 }
 
 message CreateItemInput {
-  string title = 1;
-  string description = 2;
-  string category = 3;
-  string imageUrl = 4;
-  string condition = 5;
+  required string title = 1;
+  required string description = 2;
+  required string category = 3;
+  required string imageUrl = 4;
+  required string condition = 5;
+  required int32 userId = 6;
 }
 
 message ItemIdInput {
-  int32 id = 1;
+  required int32 id = 1;
 }
 
 message UpdateItemInput {
-  string title = 1;
-  string description = 2;
-  string category = 3;
-  string imageUrl = 4;
-  string condition = 5;
+  required int32 id = 1;
+  required string title = 2;
+  required string description = 3;
+  required string category = 4;
+  string imageUrl = 5;
+  string condition = 6;
 }
 
 message ItemListOutput {
-  repeated Item item = 1;
+  repeated Item items = 1;
 }
 
 message Item {
@@ -85,16 +87,19 @@ message TradeIdInput {
 message CreateTradeInput {
   int32 requesterId = 1;
   int32 receiverId = 2;
-  int32 requestItemId = 3;
-  int32 receiveItemId = 4;
+  int32 requesterItemId = 3;
+  int32 receiverItemId = 4;
 }
 
 message UpdateTradeInput {
-  string status = 1;
+  int32 id = 1;
+  string status = 2;
 }
 
+// TODO:
 message TradeListOutput {
-  repeated Trade trade = 1;
+  repeated Trade requestedTrades = 1;
+  repeated Trade receivedTrades = 2;
 }
 
 message Trade {
